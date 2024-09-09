@@ -1,1 +1,51 @@
-site_name: My Docs
+site_name: Desarrollo de Interfaces
+nav:
+  - "Inicio": "index.md"
+  - "UT 1: Desarrollo de Interfaces de Usuario. Usabilidad": 
+    - "1. Introducción a la Usabilidad": "ut1-desarrollodeinterfacesdeusuario-usabilidad/1introduccionalausabilidad.md"
+    - "2. Diseño Centrado en el Usuario (DCU)": "ut1-desarrollodeinterfacesdeusuario-usabilidad/2diseñocentradoenelusuario.md"
+    - "3. Principios de Usabilidad": "ut1-desarrollodeinterfacesdeusuario-usabilidad/3principiosdeusabilidad.md"
+    - "4. Patrones de Diseño de Interfaces": "ut1-desarrollodeinterfacesdeusuario-usabilidad/4patronesdediseñodeinterfaces.md"
+    - "5. Evaluación Heurística": "ut1-desarrollodeinterfacesdeusuario-usabilidad/5evaluacionheuristica.md"
+    - "6. Interfaces Multidispositivo": "ut1-desarrollodeinterfacesdeusuario-usabilidad/6interfacesmultidispositivo.md"
+    - "7. Elementos de Interacción en interfaces": "ut1-desarrollodeinterfacesdeusuario-usabilidad/7elementosdeinteraccioneninterfaces.md"
+    - "8. Flujos de Usuario": "ut1-desarrollodeinterfacesdeusuario-usabilidad/8flujosdeusuario.md"
+    - "9. Prototipado y Wireframing": "ut1-desarrollodeinterfacesdeusuario-usabilidad/9prototipadoywireframing.md"
+    - "10. Herramientas para el diseño de interfaces": "ut1-desarrollodeinterfacesdeusuario-usabilidad/10herramientasparaeldiseñodeinterfaces.md"
+    - "11. Accesibilidad en Interfaces de Usuario": "ut1-desarrollodeinterfacesdeusuario-usabilidad/11accesibilidadeinterfacesdeusuario.md"
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - tables
+plugins:
+  - search:
+      lang: es
+  - glightbox
+
+theme:
+  name: material
+  features:
+    - navigation.footer
+  palette:
+    - scheme: default
+      primary: amber
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Cambiar a modo oscuro
+    - scheme: slate
+      primary: amber
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Quitar modo oscuro
