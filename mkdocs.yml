@@ -36,6 +36,7 @@ theme:
   name: material
   features:
     - navigation.footer
+    - navigation.path
   palette:
     - scheme: default
       primary: amber
@@ -49,3 +50,5 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Quitar modo oscuro
+extra_css:
+  - stylesheets/extra.css

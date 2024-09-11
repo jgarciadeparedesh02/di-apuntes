@@ -1,72 +1,59 @@
-La **Evaluación Heurística** es un método de análisis utilizado para identificar problemas de usabilidad en una interfaz de usuario. Este proceso se basa en una serie de principios generales o "heurísticas", que guían a los evaluadores a detectar posibles dificultades que los usuarios podrían enfrentar al interactuar con el sistema. En este apartado, explicaremos el método, los criterios propuestos por Jakob Nielsen y algunos ejemplos de su aplicación práctica.
-
----
+La **Evaluación Heurística** es una técnica esencial para identificar problemas de usabilidad en interfaces de usuario. Este método se basa en una serie de principios generales, o "heurísticas", que ayudan a los evaluadores a detectar dificultades que los usuarios podrían enfrentar al interactuar con el sistema. En este apartado, voy a explicar el método, los criterios propuestos por Jakob Nielsen, y proporcionar algunos ejemplos prácticos de su aplicación.
 
 ### Método de Evaluación Heurística
 
-El **método de evaluación heurística** implica que un pequeño grupo de evaluadores (normalmente entre 3 y 5) revise la interfaz basándose en principios de usabilidad predefinidos. Los evaluadores inspeccionan el sistema de manera independiente y documentan los problemas que encuentran en relación a las heurísticas. Este proceso suele ser rápido y rentable, ya que no requiere la participación directa de usuarios.
+El **método de evaluación heurística** implica que un pequeño grupo de evaluadores (generalmente entre 3 y 5) revise la interfaz basándose en principios de usabilidad predefinidos. Los evaluadores inspeccionan la interfaz de manera independiente y documentan los problemas en relación con las heurísticas. Este proceso suele ser rápido y rentable, ya que no requiere la participación directa de usuarios.
 
-Los pasos básicos de una evaluación heurística son:
-
-1. **Definir las heurísticas**: Se eligen una serie de principios o criterios para guiar la evaluación (generalmente se utilizan las heurísticas de Jakob Nielsen, que detallaremos más adelante).
-2. **Revisión de la interfaz**: Cada evaluador revisa la interfaz de manera independiente, identificando problemas de usabilidad.
-3. **Análisis de resultados**: Los problemas encontrados por los evaluadores se agrupan y priorizan según su gravedad.
-4. **Propuestas de mejora**: Se generan recomendaciones específicas para mejorar la usabilidad del sistema.
-
----
+| Paso                          | Descripción                                                                                     |
+|-------------------------------|-------------------------------------------------------------------------------------------------|
+| **Definir las heurísticas**   | Seleccionar los principios o criterios para guiar la evaluación (generalmente las heurísticas de Jakob Nielsen). |
+| **Revisión de la interfaz**   | Cada evaluador revisa la interfaz de manera independiente y detecta problemas de usabilidad.     |
+| **Análisis de resultados**    | Agrupar y priorizar los problemas encontrados según su gravedad.                                |
+| **Propuestas de mejora**      | Generar recomendaciones específicas para mejorar la usabilidad del sistema.                    |
 
 ### Criterios y Principios de Jakob Nielsen
 
-Jakob Nielsen, uno de los expertos más reconocidos en usabilidad, desarrolló un conjunto de **10 principios heurísticos** que son ampliamente utilizados en la evaluación de interfaces. A continuación se describen estos principios y su aplicación:
+Jakob Nielsen, uno de los expertos más reconocidos en usabilidad, desarrolló un conjunto de **10 principios heurísticos** que son ampliamente utilizados. A continuación, detallo estos principios y su aplicación:
 
-1. **Visibilidad del estado del sistema**: La interfaz debe mantener al usuario informado sobre lo que está ocurriendo mediante retroalimentación adecuada y en un tiempo razonable. Ejemplo: mostrar una barra de progreso durante la carga de una página.
-
-2. **Relación entre el sistema y el mundo real**: La interfaz debe utilizar un lenguaje que sea familiar para el usuario, siguiendo convenciones del mundo real. Ejemplo: utilizar iconos reconocibles como un sobre para representar el correo electrónico.
-
-3. **Control y libertad del usuario**: Los usuarios a menudo seleccionan opciones por error, por lo que deben existir mecanismos claros para deshacer o rehacer acciones. Ejemplo: incluir botones de "Deshacer" y "Rehacer" en aplicaciones de edición.
-
-4. **Consistencia y estándares**: Los usuarios no deberían tener que adivinar si diferentes palabras, acciones o situaciones significan lo mismo en distintos contextos. Ejemplo: mantener el mismo diseño de botones a lo largo de una aplicación.
-
-5. **Prevención de errores**: Mejor que proporcionar buenos mensajes de error, es un diseño que prevenga que ocurran errores desde el principio. Ejemplo: deshabilitar un botón de "Enviar" hasta que todos los campos obligatorios estén completados.
-
-6. **Reconocimiento antes que recuerdo**: Minimizar la carga de memoria del usuario haciendo visibles las opciones y acciones. Ejemplo: mostrar las opciones recientes o predicciones de texto cuando el usuario empieza a escribir.
-
-7. **Flexibilidad y eficiencia de uso**: El sistema debe ofrecer vías rápidas para los usuarios avanzados sin que los usuarios novatos se sientan perdidos. Ejemplo: proporcionar atajos de teclado en una aplicación de escritorio.
-
-8. **Diseño estético y minimalista**: Las interfaces no deben contener información irrelevante o poco utilizada, ya que distrae al usuario. Ejemplo: eliminar elementos visuales innecesarios en una página para facilitar el enfoque en las tareas clave.
-
-9. **Ayudar a los usuarios a reconocer, diagnosticar y recuperarse de errores**: Los mensajes de error deben expresarse en lenguaje claro, indicando el problema y sugiriendo una solución. Ejemplo: mensajes de error específicos como "El formato del correo electrónico es incorrecto".
-
-10. **Ayuda y documentación**: Aunque el sistema debe ser lo suficientemente sencillo de usar sin necesidad de mucha documentación, siempre es útil tener una ayuda accesible y comprensible. Ejemplo: un botón de "Ayuda" visible en cada pantalla o sección.
-
----
+| Principio                                          | Descripción                                                                                          | Ejemplo                                                  |
+|----------------------------------------------------|------------------------------------------------------------------------------------------------------|----------------------------------------------------------|
+| **Visibilidad del estado del sistema**             | La interfaz debe informar al usuario sobre lo que está ocurriendo mediante retroalimentación adecuada. | Mostrar una barra de progreso durante la carga.         |
+| **Relación entre el sistema y el mundo real**     | Utilizar un lenguaje familiar y seguir convenciones del mundo real.                                 | Iconos reconocibles como un sobre para representar el correo. |
+| **Control y libertad del usuario**                 | Permitir a los usuarios deshacer o rehacer acciones fácilmente.                                      | Botones de "Deshacer" y "Rehacer" en aplicaciones de edición. |
+| **Consistencia y estándares**                      | Mantener el mismo diseño y significado en diferentes contextos.                                      | Diseño consistente de botones a lo largo de una aplicación. |
+| **Prevención de errores**                          | Diseñar para prevenir errores en lugar de solo proporcionar mensajes de error.                       | Deshabilitar el botón de "Enviar" hasta completar todos los campos obligatorios. |
+| **Reconocimiento antes que recuerdo**              | Minimizar la carga de memoria del usuario haciendo visibles las opciones.                           | Mostrar opciones recientes o predicciones de texto.    |
+| **Flexibilidad y eficiencia de uso**               | Ofrecer vías rápidas para usuarios avanzados sin complicar la experiencia para novatos.             | Atajos de teclado en una aplicación de escritorio.     |
+| **Diseño estético y minimalista**                  | Evitar información irrelevante que distraiga al usuario.                                             | Eliminar elementos visuales innecesarios en una página.|
+| **Ayudar a los usuarios a reconocer, diagnosticar y recuperarse de errores** | Los mensajes de error deben ser claros y proporcionar soluciones.                                    | Mensajes de error específicos como "El formato del correo electrónico es incorrecto". |
+| **Ayuda y documentación**                          | Proporcionar ayuda accesible y comprensible, aunque la interfaz deba ser fácil de usar por sí misma. | Botón de "Ayuda" visible en cada sección.              |
 
 ### Ejemplos de Análisis y Casos Prácticos
 
-A continuación, se describen ejemplos y casos prácticos de cómo se puede aplicar la evaluación heurística en contextos reales:
-
 #### Caso 1: Evaluación de una Aplicación de Comercio Electrónico
 
-En una tienda online, un grupo de evaluadores utiliza las heurísticas de Nielsen para revisar la usabilidad. Algunos problemas identificados incluyen:
+En la tienda online, al aplicar las heurísticas de Nielsen, encontramos:
 
-- **Inconsistencias en los botones**: El botón de "Añadir al carrito" aparece en diferentes tamaños y ubicaciones en distintas páginas de productos, lo que genera confusión entre los usuarios (viola la heurística de "Consistencia y estándares").
-- **Falta de retroalimentación**: Después de añadir un producto al carrito, no aparece ninguna notificación clara confirmando la acción (viola la heurística de "Visibilidad del estado del sistema").
-- **Errores difíciles de entender**: Si el usuario intenta pagar sin haber introducido su dirección, aparece un mensaje de error poco claro ("Error en el proceso de pago"), en lugar de un mensaje explicativo (viola la heurística de "Reconocer, diagnosticar y recuperarse de errores").
+- **Inconsistencias en los botones**: El botón de "Añadir al carrito" varía en tamaño y ubicación en diferentes páginas, causando confusión (violación de "Consistencia y estándares").
+- **Falta de retroalimentación**: No hay una confirmación clara después de añadir un producto al carrito (violación de "Visibilidad del estado del sistema").
+- **Errores difíciles de entender**: Los mensajes de error al intentar pagar sin dirección son vagos ("Error en el proceso de pago") en lugar de ser descriptivos (violación de "Reconocer, diagnosticar y recuperarse de errores").
 
-Se proponen varias mejoras, como asegurar la consistencia en el diseño de los botones, añadir una notificación tras añadir productos al carrito y mejorar los mensajes de error.
+##### **Propuestas de mejora**
+- Asegurar consistencia en el diseño de botones.
+- Añadir una notificación clara tras añadir productos al carrito.
+- Mejorar los mensajes de error para mayor claridad.
 
 #### Caso 2: Evaluación de una Aplicación Móvil de Redes Sociales
 
-Al analizar la usabilidad de una aplicación móvil, los evaluadores encuentran los siguientes problemas:
+Al evaluar la usabilidad de una aplicación móvil, observamos:
 
-- **Carga confusa de contenido**: No hay una indicación clara de que el contenido se está cargando cuando el usuario desplaza la pantalla hacia abajo (viola la heurística de "Visibilidad del estado del sistema").
-- **Falta de control para deshacer acciones**: Los usuarios no pueden deshacer fácilmente una publicación que hayan hecho por error (viola la heurística de "Control y libertad del usuario").
-- **Contenido excesivo en pantallas pequeñas**: La aplicación muestra demasiada información en cada vista, lo que resulta abrumador para el usuario (viola la heurística de "Diseño estético y minimalista").
+- **Carga confusa de contenido**: No hay una indicación clara cuando se carga más contenido al desplazarse (violación de "Visibilidad del estado del sistema").
+- **Falta de control para deshacer acciones**: Los usuarios no pueden deshacer publicaciones hechas por error (violación de "Control y libertad del usuario").
+- **Contenido excesivo en pantallas pequeñas**: La aplicación muestra demasiada información en cada vista, resultando abrumadora (violación de "Diseño estético y minimalista").
 
-Las sugerencias incluyen agregar un icono de carga visible, implementar una opción para deshacer publicaciones y simplificar el diseño visual para adaptarse mejor a pantallas pequeñas.
+##### **Propuestas de mejora**
+- Añadir un icono de carga visible.
+- Implementar una opción para deshacer publicaciones.
+- Simplificar el diseño visual para mejor adaptación a pantallas pequeñas.
 
----
-
-### Conclusión
-
-La **Evaluación Heurística** es una técnica valiosa para mejorar la usabilidad de cualquier interfaz de usuario. Aplicar los principios de Jakob Nielsen permite identificar rápidamente problemas comunes y ofrecer soluciones prácticas antes de que los usuarios finales experimenten dificultades. Aunque no reemplaza las pruebas con usuarios reales, es una herramienta muy útil en las primeras fases del desarrollo y para revisiones iterativas.
+Aplicar los principios de Jakob Nielsen ayuda a identificar problemas comunes y ofrecer soluciones prácticas antes de que los usuarios finales encuentren dificultades. Aunque no sustituye las pruebas con usuarios reales, es una herramienta útil en las fases iniciales del desarrollo y en revisiones iterativas.

@@ -2,7 +2,7 @@
 
 ## Módulo de Desarrollo de Aplicaciones Multiplataforma
 
-¡Hola a todos! 👋 Me complace daros la bienvenida a la asignatura de **Desarrollo de Interfaces** del grado superior de **Desarrollo de Aplicaciones Multiplataforma**. Durante este curso, exploraremos el diseño y desarrollo de interfaces de usuario efectivas y usables, haciendo uso de las tecnologías y herramientas más actuales en el campo del desarrollo web y móvil.
+AAA ¡Hola a todos! 👋 Me complace daros la bienvenida a la asignatura de **Desarrollo de Interfaces** del grado superior de **Desarrollo de Aplicaciones Multiplataforma**. Durante este curso, exploraremos el diseño y desarrollo de interfaces de usuario efectivas y usables, haciendo uso de las tecnologías y herramientas más actuales en el campo del desarrollo web y móvil.
 
 ### ¿Qué aprenderemos?
 A lo largo del curso, nos centraremos en la creación de interfaces de usuario centradas en la **usabilidad**, asegurándonos de que las aplicaciones sean intuitivas, accesibles y eficientes. Desde la instalación y configuración de entornos de desarrollo, hasta la creación de componentes avanzados con **Angular** e **Ionic**, vamos a profundizar en herramientas clave para el desarrollo moderno de aplicaciones.
