@@ -11,8 +11,21 @@ nav:
     - "7. Elementos de Interacción en interfaces": "ut1-desarrollodeinterfacesdeusuario-usabilidad/7elementosdeinteraccioneninterfaces.md"
     - "8. Flujos de Usuario": "ut1-desarrollodeinterfacesdeusuario-usabilidad/8flujosdeusuario.md"
     - "9. Prototipado y Wireframing": "ut1-desarrollodeinterfacesdeusuario-usabilidad/9prototipadoywireframing.md"
-    - "10. Herramientas para el diseño de interfaces": "ut1-desarrollodeinterfacesdeusuario-usabilidad/10herramientasparaeldiseñodeinterfaces.md"
-    - "11. Accesibilidad en Interfaces de Usuario": "ut1-desarrollodeinterfacesdeusuario-usabilidad/11accesibilidadeinterfacesdeusuario.md"
+    - "10. Accesibilidad en Interfaces de Usuario": "ut1-desarrollodeinterfacesdeusuario-usabilidad/10accesibilidadeinterfacesdeusuario.md"
+  - "UT2: Introducción a TypeScript":
+    - "1. ¿Qué es TypeScript?": "ut2-introduccionatypescript/1queestypescript.md"
+    - "2. Ventajas de usar TypeScript": "ut2-introduccionatypescript/2ventajasdeusartypescript.md"
+    - "3. Instalación y Configuración de TypeScript": "ut2-introduccionatypescript/3instalacionyconfiguraciondetypescript.md"
+    - "4. Primer Proyecto con TypeScript": "ut2-introduccionatypescript/4primerproyecto.md"
+    - "5. Tipos Básicos en TypeScript": "ut2-introduccionatypescript/5tiposbasicos.md"
+    - "6. Condicionales en TypeScript": "ut2-introduccionatypescript/6condicionales.md"
+    - "7. Bucles en TypeScript": "ut2-introduccionatypescript/7bucles.md"
+    - "8. Objetos en TypeScript": "ut2-introduccionatypescript/8objetos.md"
+    - "9. Funciones y parámetros en TypeScript": "ut2-introduccionatypescript/9funcionesyparametros.md"
+    - "10. Interfaces y Tipos personalizados en TypeScript": "ut2-introduccionatypescript/10interfacesyobjetos.md"
+    - "11. Clases y Herencia en TypeScript": "ut2-introduccionatypescript/11clasesyherencia.md"
+    - "12. Modularización de código en TypeScript": "ut2-introduccionatypescript/12modularizaciondecodigo.md"
+    - "Debug En TypeScript": "ut2-introduccionatypescript/13recursos.md"
 markdown_extensions:
   - admonition
   - attr_list
