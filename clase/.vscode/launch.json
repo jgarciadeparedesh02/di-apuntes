@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "node",                         // Tipo de depuración
+        "request": "launch",                    // Tipo de solicitud de depuración
+        "name": "Launch Program",               // Nombre de la configuración
+        "program": "${workspaceFolder}/index.ts",  // Ruta al archivo TypeScript
+        "preLaunchTask": "tsc: build - tsconfig.json", // Tarea de compilación antes de lanzar la depuración
+        "outFiles": [
+          "${workspaceFolder}/**/*.js"          // Coincide con los archivos JavaScript generados
+        ]
+      }
+    ]
+  }

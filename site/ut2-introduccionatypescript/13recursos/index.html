@@ -1,0 +1,1230 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../12modularizaciondecodigo/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+    
+    
+      
+        <title>Debug En TypeScript - Desarrollo de Interfaces</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35f28582.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guia-para-debuggear-typescript-en-visual-studio-code" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Desarrollo de Interfaces" class="md-header__button md-logo" aria-label="Desarrollo de Interfaces" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Desarrollo de Interfaces
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Debug En TypeScript
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="amber" data-md-color-accent="amber"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="amber"  aria-label="Quitar modo oscuro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Quitar modo oscuro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Desarrollo de Interfaces" class="md-nav__button md-logo" aria-label="Desarrollo de Interfaces" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Desarrollo de Interfaces
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UT 1: Desarrollo de Interfaces de Usuario. Usabilidad
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            UT 1: Desarrollo de Interfaces de Usuario. Usabilidad
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ut1-desarrollodeinterfacesdeusuario-usabilidad/1introduccionalausabilidad/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Introducción a la Usabilidad
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ut1-desarrollodeinterfacesdeusuario-usabilidad/2dise%C3%B1ocentradoenelusuario/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Diseño Centrado en el Usuario (DCU)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ut1-desarrollodeinterfacesdeusuario-usabilidad/3principiosdeusabilidad/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Principios de Usabilidad
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ut1-desarrollodeinterfacesdeusuario-usabilidad/4patronesdedise%C3%B1odeinterfaces/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Patrones de Diseño de Interfaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ut1-desarrollodeinterfacesdeusuario-usabilidad/5evaluacionheuristica/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Evaluación Heurística
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ut1-desarrollodeinterfacesdeusuario-usabilidad/6interfacesmultidispositivo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Interfaces Multidispositivo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ut1-desarrollodeinterfacesdeusuario-usabilidad/7elementosdeinteraccioneninterfaces/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Elementos de Interacción en interfaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ut1-desarrollodeinterfacesdeusuario-usabilidad/8flujosdeusuario/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Flujos de Usuario
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ut1-desarrollodeinterfacesdeusuario-usabilidad/9prototipadoywireframing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Prototipado y Wireframing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ut1-desarrollodeinterfacesdeusuario-usabilidad/10accesibilidadeinterfacesdeusuario/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Accesibilidad en Interfaces de Usuario
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    UT2: Introducción a TypeScript
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            UT2: Introducción a TypeScript
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1queestypescript/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. ¿Qué es TypeScript?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2ventajasdeusartypescript/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Ventajas de usar TypeScript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3instalacionyconfiguraciondetypescript/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. Instalación y Configuración de TypeScript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4primerproyecto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Primer Proyecto con TypeScript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5tiposbasicos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Tipos Básicos en TypeScript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6condicionales/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Condicionales en TypeScript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7bucles/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Bucles en TypeScript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8objetos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Objetos en TypeScript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9funcionesyparametros/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Funciones y parámetros en TypeScript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10interfacesyobjetos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Interfaces y Tipos personalizados en TypeScript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11clasesyherencia/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Clases y Herencia en TypeScript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12modularizaciondecodigo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Modularización de código en TypeScript
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Debug En TypeScript
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Debug En TypeScript
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-configura-el-proyecto-de-typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      1️⃣ Configura el Proyecto de TypeScript
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-escribe-un-codigo-de-ejemplo-para-debuggear" class="md-nav__link">
+    <span class="md-ellipsis">
+      2️⃣ Escribe un Código de Ejemplo para Debuggear
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-compila-el-codigo-typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      3️⃣ Compila el Código TypeScript
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-configura-el-archivo-launchjson-para-la-depuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4️⃣ Configura el Archivo launch.json para la Depuración
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ejecuta-la-depuracion-en-visual-studio-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      5️⃣ Ejecuta la Depuración en Visual Studio Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-aprovecha-los-mapas-de-origen-source-maps" class="md-nav__link">
+    <span class="md-ellipsis">
+      6️⃣ Aprovecha los Mapas de Origen (Source Maps)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-consejos-para-un-debugging-efectivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      7️⃣ Consejos para un Debugging Efectivo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#y-listo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌟 ¡Y Listo!
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-configura-el-proyecto-de-typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      1️⃣ Configura el Proyecto de TypeScript
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-escribe-un-codigo-de-ejemplo-para-debuggear" class="md-nav__link">
+    <span class="md-ellipsis">
+      2️⃣ Escribe un Código de Ejemplo para Debuggear
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-compila-el-codigo-typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      3️⃣ Compila el Código TypeScript
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-configura-el-archivo-launchjson-para-la-depuracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      4️⃣ Configura el Archivo launch.json para la Depuración
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ejecuta-la-depuracion-en-visual-studio-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      5️⃣ Ejecuta la Depuración en Visual Studio Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-aprovecha-los-mapas-de-origen-source-maps" class="md-nav__link">
+    <span class="md-ellipsis">
+      6️⃣ Aprovecha los Mapas de Origen (Source Maps)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-consejos-para-un-debugging-efectivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      7️⃣ Consejos para un Debugging Efectivo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#y-listo" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌟 ¡Y Listo!
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="guia-para-debuggear-typescript-en-visual-studio-code">🛠️ Guía para Debuggear TypeScript en Visual Studio Code</h1>
+<h3 id="1-configura-el-proyecto-de-typescript">1️⃣ <strong>Configura el Proyecto de TypeScript</strong></h3>
+<p>Para comenzar, necesitas configurar tu proyecto de TypeScript para que esté listo para ser depurado. Esto se hace utilizando un archivo <code>tsconfig.json</code> que configura el compilador de TypeScript.</p>
+<p><strong>Abre tu proyecto en VS Code</strong>: Si aún no tienes un proyecto, crea una carpeta nueva y ábrela en VS Code.</p>
+<p><strong>Abre la Terminal Integrada</strong>: Puedes abrir la terminal integrada de VS Code presionando <code>Ctrl + \`` (Windows/Linux) o</code>Cmd + `` (Mac).</p>
+<p><strong>Ejecuta <code>tsc --init</code> para crear el archivo <code>tsconfig.json</code></strong>:</p>
+<div class="highlight"><pre><span></span><code>tsc<span class="w"> </span>--init
+</code></pre></div>
+<p>Este comando generará un archivo <code>tsconfig.json</code> en la raíz de tu proyecto.</p>
+<p><strong>Configura el archivo <code>tsconfig.json</code></strong>:</p>
+<p>Abre el archivo <code>tsconfig.json</code> generado y asegúrate de que contenga las siguientes configuraciones:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;compilerOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;es2016&quot;</span><span class="p">,</span><span class="w">                </span><span class="c1">// Versión de ECMAScript de destino</span>
+<span class="w">    </span><span class="nt">&quot;module&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;commonjs&quot;</span><span class="p">,</span><span class="w">              </span><span class="c1">// Módulo común para Node.js</span>
+<span class="w">    </span><span class="nt">&quot;strict&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">                    </span><span class="c1">// Activa las verificaciones estrictas de TypeScript</span>
+<span class="w">    </span><span class="nt">&quot;esModuleInterop&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">           </span><span class="c1">// Interoperabilidad de módulos ES</span>
+<span class="w">    </span><span class="nt">&quot;forceConsistentCasingInFileNames&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// Consistencia de mayúsculas y minúsculas en nombres de archivo</span>
+<span class="w">    </span><span class="nt">&quot;skipLibCheck&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">              </span><span class="c1">// Omite la verificación de tipos en archivos de definición de bibliotecas</span>
+<span class="w">    </span><span class="nt">&quot;sourceMap&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">                  </span><span class="c1">// Importante: Habilita los mapas de origen para depuración</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><strong>Importante</strong>: La propiedad <code>"sourceMap": true</code> es crucial para el debugging. Esta propiedad permite que el depurador de VS Code mapee el código JavaScript compilado de vuelta al código TypeScript original, facilitando la depuración.</li>
+</ul>
+<h3 id="2-escribe-un-codigo-de-ejemplo-para-debuggear">2️⃣ <strong>Escribe un Código de Ejemplo para Debuggear</strong></h3>
+<p>Para verificar que todo funciona correctamente, crea un archivo TypeScript simple en la raíz de tu proyecto. Por ejemplo, crea un archivo llamado <code>extra-ejercicios-basicos-sol.ts</code> y añade el siguiente código:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">suma</span><span class="p">(</span><span class="nx">a</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span><span class="w"> </span><span class="nx">mostrarResultado</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">suma</span><span class="p">(</span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`El resultado de la suma es: </span><span class="si">${</span><span class="nx">resultado</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">mostrarResultado</span><span class="p">();</span>
+</code></pre></div>
+<p>Este código define una función <code>suma</code> y otra función <code>mostrarResultado</code> que llama a <code>suma</code> y muestra el resultado.</p>
+<h3 id="3-compila-el-codigo-typescript">3️⃣ <strong>Compila el Código TypeScript</strong></h3>
+<p>Compila el código TypeScript a JavaScript usando el siguiente comando en la terminal integrada de VS Code:</p>
+<div class="highlight"><pre><span></span><code>tsc
+</code></pre></div>
+<p>Esto generará un archivo JavaScript correspondiente (<code>extra-ejercicios-basicos-sol.js</code>) en la misma carpeta, a menos que hayas configurado una carpeta de salida (<code>outDir</code>) en <code>tsconfig.json</code>.</p>
+<h3 id="4-configura-el-archivo-launchjson-para-la-depuracion">4️⃣ <strong>Configura el Archivo <code>launch.json</code> para la Depuración</strong></h3>
+<ol>
+<li>
+<p><strong>Crea la Carpeta <code>.vscode</code></strong>: Si no existe ya, crea una carpeta llamada <code>.vscode</code> en la raíz de tu proyecto.</p>
+</li>
+<li>
+<p><strong>Crea el Archivo <code>launch.json</code></strong>: Dentro de la carpeta <code>.vscode</code>, crea un archivo llamado <code>launch.json</code>.</p>
+</li>
+<li>
+<p><strong>Configura el Archivo <code>launch.json</code></strong>: Añade la siguiente configuración al archivo <code>launch.json</code>:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node&quot;</span><span class="p">,</span><span class="w">                         </span><span class="c1">// Tipo de depuración</span>
+<span class="w">      </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span><span class="w">                    </span><span class="c1">// Tipo de solicitud de depuración</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Launch Program&quot;</span><span class="p">,</span><span class="w">               </span><span class="c1">// Nombre de la configuración</span>
+<span class="w">      </span><span class="nt">&quot;program&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}/extra-ejercicios-basicos-sol.ts&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// Ruta al archivo TypeScript</span>
+<span class="w">      </span><span class="nt">&quot;preLaunchTask&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tsc: build - tsconfig.json&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// Tarea de compilación antes de lanzar la depuración</span>
+<span class="w">      </span><span class="nt">&quot;outFiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;${workspaceFolder}/**/*.js&quot;</span><span class="w">          </span><span class="c1">// Coincide con los archivos JavaScript generados</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><strong><code>type</code></strong>: Especifica que el depurador es para Node.js.</li>
+<li><strong><code>request</code></strong>: <code>launch</code> indica que se iniciará un programa.</li>
+<li><strong><code>program</code></strong>: Ruta al archivo TypeScript que deseas depurar.</li>
+<li><strong><code>preLaunchTask</code></strong>: Compila el código TypeScript antes de iniciar la depuración.</li>
+<li><strong><code>outFiles</code></strong>: Permite al depurador encontrar los archivos <code>.js</code> generados por TypeScript.</li>
+</ul>
+<h3 id="5-ejecuta-la-depuracion-en-visual-studio-code">5️⃣ <strong>Ejecuta la Depuración en Visual Studio Code</strong></h3>
+<ol>
+<li>
+<p><strong>Agrega Puntos de Interrupción (Breakpoints)</strong>: Abre el archivo <code>extra-ejercicios-basicos-sol.ts</code> y haz clic en la barra de la izquierda junto a los números de línea para agregar un <strong>punto de interrupción</strong>. Por ejemplo, puedes agregar un breakpoint en la línea donde se llama a <code>console.log</code>.</p>
+</li>
+<li>
+<p><strong>Inicia la Depuración</strong>: Ve a la vista de depuración (presiona <code>Ctrl + Shift + D</code> o <code>Cmd + Shift + D</code> en Mac), selecciona "Launch Program" en el menú desplegable y haz clic en el botón de inicio (<code>▶️</code>) o presiona <code>F5</code>.</p>
+</li>
+<li>
+<p><strong>Inspecciona el Código durante la Depuración</strong>: Cuando la ejecución se detenga en el punto de interrupción, podrás inspeccionar variables, evaluar expresiones en la <strong>Consola de Depuración</strong>, y navegar por el <strong>stack de llamadas</strong>.</p>
+</li>
+</ol>
+<h3 id="6-aprovecha-los-mapas-de-origen-source-maps">6️⃣ <strong>Aprovecha los Mapas de Origen (Source Maps)</strong></h3>
+<p>Gracias a la opción <code>"sourceMap": true</code> en <code>tsconfig.json</code>, VS Code podrá mapear el código JavaScript compilado al TypeScript original, lo que facilita la depuración.</p>
+<ul>
+<li><strong>Ver el Código Original</strong>: Durante la depuración, VS Code mostrará el archivo <code>.ts</code> original en lugar del archivo <code>.js</code> compilado, lo que permite que los breakpoints, la navegación y las inspecciones se realicen directamente en el código TypeScript.</li>
+</ul>
+<h3 id="7-consejos-para-un-debugging-efectivo">7️⃣ <strong>Consejos para un Debugging Efectivo</strong></h3>
+<ul>
+<li><strong>Usa "Step Over" (F10) y "Step Into" (F11)</strong> para navegar por el código línea a línea o entrar en funciones.</li>
+<li><strong>Explora el Call Stack</strong>: Te ayuda a ver la ruta que siguió la ejecución del código.</li>
+<li><strong>Utiliza la Consola de Depuración</strong> para evaluar expresiones y cambiar variables en tiempo real.</li>
+</ul>
+<h3 id="y-listo">🌟 ¡Y Listo!</h3>
+<p>Siguiendo estos pasos, ahora tienes un entorno de depuración completamente configurado en Visual Studio Code para trabajar con TypeScript. Esta configuración te permitirá depurar de manera eficiente y encontrar errores en tu código mucho más rápido. ¡Feliz debugging! 🐞💪</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../12modularizaciondecodigo/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 12. Modularización de código en TypeScript">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                12. Modularización de código en TypeScript
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.path"], "search": "../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
