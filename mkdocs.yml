@@ -25,7 +25,7 @@ nav:
     - "10. Interfaces y Tipos personalizados en TypeScript": "ut2-introduccionatypescript/10interfacesyobjetos.md"
     - "11. Clases y Herencia en TypeScript": "ut2-introduccionatypescript/11clasesyherencia.md"
     - "12. Modularización de código en TypeScript": "ut2-introduccionatypescript/12modularizaciondecodigo.md"
-    - "Debug En TypeScript": "ut2-introduccionatypescript/13recursos.md"
+    - "Recursos y FAQ": "ut2-introduccionatypescript/13recursos.md"
 markdown_extensions:
   - admonition
   - attr_list

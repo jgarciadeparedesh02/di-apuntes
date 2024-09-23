@@ -1,6 +1,7 @@
-# 🛠️ Guía para Debuggear TypeScript en Visual Studio Code
+# Recursos y FAQ
+### 🛠️ Guía para Debuggear TypeScript en Visual Studio Code
 
-### 1️⃣ **Configura el Proyecto de TypeScript**
+#### 1️⃣ **Configura el Proyecto de TypeScript**
 
 Para comenzar, necesitas configurar tu proyecto de TypeScript para que esté listo para ser depurado. Esto se hace utilizando un archivo `tsconfig.json` que configura el compilador de TypeScript.
 
@@ -36,7 +37,7 @@ Este comando generará un archivo `tsconfig.json` en la raíz de tu proyecto.
 
    - **Importante**: La propiedad `"sourceMap": true` es crucial para el debugging. Esta propiedad permite que el depurador de VS Code mapee el código JavaScript compilado de vuelta al código TypeScript original, facilitando la depuración.
 
-### 2️⃣ **Escribe un Código de Ejemplo para Debuggear**
+#### 2️⃣ **Escribe un Código de Ejemplo para Debuggear**
 
 Para verificar que todo funciona correctamente, crea un archivo TypeScript simple en la raíz de tu proyecto. Por ejemplo, crea un archivo llamado `extra-ejercicios-basicos-sol.ts` y añade el siguiente código:
 
@@ -55,7 +56,7 @@ mostrarResultado();
 
 Este código define una función `suma` y otra función `mostrarResultado` que llama a `suma` y muestra el resultado.
 
-### 3️⃣ **Compila el Código TypeScript**
+#### 3️⃣ **Compila el Código TypeScript**
 
 Compila el código TypeScript a JavaScript usando el siguiente comando en la terminal integrada de VS Code:
 
@@ -65,7 +66,7 @@ tsc
 
 Esto generará un archivo JavaScript correspondiente (`extra-ejercicios-basicos-sol.js`) en la misma carpeta, a menos que hayas configurado una carpeta de salida (`outDir`) en `tsconfig.json`.
 
-### 4️⃣ **Configura el Archivo `launch.json` para la Depuración**
+#### 4️⃣ **Configura el Archivo `launch.json` para la Depuración**
 
 1. **Crea la Carpeta `.vscode`**: Si no existe ya, crea una carpeta llamada `.vscode` en la raíz de tu proyecto.
 
@@ -97,7 +98,7 @@ Esto generará un archivo JavaScript correspondiente (`extra-ejercicios-basicos-
    - **`preLaunchTask`**: Compila el código TypeScript antes de iniciar la depuración.
    - **`outFiles`**: Permite al depurador encontrar los archivos `.js` generados por TypeScript.
 
-### 5️⃣ **Ejecuta la Depuración en Visual Studio Code**
+#### 5️⃣ **Ejecuta la Depuración en Visual Studio Code**
 
 1. **Agrega Puntos de Interrupción (Breakpoints)**: Abre el archivo `extra-ejercicios-basicos-sol.ts` y haz clic en la barra de la izquierda junto a los números de línea para agregar un **punto de interrupción**. Por ejemplo, puedes agregar un breakpoint en la línea donde se llama a `console.log`.
 
@@ -105,18 +106,61 @@ Esto generará un archivo JavaScript correspondiente (`extra-ejercicios-basicos-
 
 3. **Inspecciona el Código durante la Depuración**: Cuando la ejecución se detenga en el punto de interrupción, podrás inspeccionar variables, evaluar expresiones en la **Consola de Depuración**, y navegar por el **stack de llamadas**.
 
-### 6️⃣ **Aprovecha los Mapas de Origen (Source Maps)**
+#### 6️⃣ **Aprovecha los Mapas de Origen (Source Maps)**
 
 Gracias a la opción `"sourceMap": true` en `tsconfig.json`, VS Code podrá mapear el código JavaScript compilado al TypeScript original, lo que facilita la depuración.
 
 - **Ver el Código Original**: Durante la depuración, VS Code mostrará el archivo `.ts` original en lugar del archivo `.js` compilado, lo que permite que los breakpoints, la navegación y las inspecciones se realicen directamente en el código TypeScript.
 
-### 7️⃣ **Consejos para un Debugging Efectivo**
+#### 7️⃣ **Consejos para un Debugging Efectivo**
 
 - **Usa "Step Over" (F10) y "Step Into" (F11)** para navegar por el código línea a línea o entrar en funciones.
 - **Explora el Call Stack**: Te ayuda a ver la ruta que siguió la ejecución del código.
 - **Utiliza la Consola de Depuración** para evaluar expresiones y cambiar variables en tiempo real.
 
-### 🌟 ¡Y Listo!
+### 📥 Guía para Leer Variables por Consola en TypeScript
 
-Siguiendo estos pasos, ahora tienes un entorno de depuración completamente configurado en Visual Studio Code para trabajar con TypeScript. Esta configuración te permitirá depurar de manera eficiente y encontrar errores en tu código mucho más rápido. ¡Feliz debugging! 🐞💪
+Cuando trabajamos con TypeScript en entornos de línea de comandos, es común necesitar capturar entradas del usuario. Para esto, podemos usar la librería `readline-sync`, que permite interactuar fácilmente con el usuario desde la consola.
+
+#### 🛠️ Instalación de `readline-sync`
+
+Antes de comenzar, es necesario instalar la librería usando npm:
+
+```bash
+npm install readline-sync
+```
+
+#### 🚀 Ejemplo de Uso de `readline-sync`
+
+A continuación, te muestro un ejemplo básico de cómo usar `readline-sync` para capturar la entrada del usuario en TypeScript:
+
+```typescript
+// Importamos la librería readline-sync
+import * as readlineSync from 'readline-sync';
+
+// Esperamos la respuesta del usuario.
+const userName: string = readlineSync.question('¿Puedo conocer tu nombre? ');
+console.log('¡Hola ' + userName + '!');
+
+// Manejo de texto secreto (por ejemplo, contraseñas).
+const favFood: string = readlineSync.question('¿Cuál es tu comida favorita? ', {
+    hideEchoBack: true // El texto introducido se oculta en pantalla.
+});
+console.log('¡A ' + userName + ' le gusta ' + favFood + '!');
+```
+
+#### 📖 Explicación del Código
+
+1. **Instalación**: `readline-sync` se instala ejecutando el comando `npm install readline-sync`.
+2. **Importación de la Librería**: Utilizamos `import * as readlineSync from 'readline-sync';` para importar la librería y poder usar sus funcionalidades.
+3. **Captura de Datos**: 
+   - `question()` se usa para mostrar un mensaje y capturar la respuesta del usuario.
+   - En el ejemplo, pedimos el nombre del usuario y lo saludamos.
+4. **Entrada Oculta**:
+   - La opción `{ hideEchoBack: true }` se usa para ocultar lo que escribe el usuario, útil para contraseñas o información sensible.
+
+#### 🔧 Aplicaciones Comunes
+
+- **Captura de Datos en Aplicaciones CLI**: Ideal para aplicaciones de línea de comandos que requieren interacción del usuario.
+- **Formularios y Encuestas Simples**: Se puede usar para crear formularios simples y recopilar datos sin una interfaz gráfica.
+- **Prototipos y Pruebas Rápidas**: Útil para prototipar rápidamente funciones que requieren entrada del usuario.
