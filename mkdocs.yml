@@ -26,6 +26,15 @@ nav:
     - "11. Clases y Herencia en TypeScript": "ut2-introduccionatypescript/11clasesyherencia.md"
     - "12. Modularización de código en TypeScript": "ut2-introduccionatypescript/12modularizaciondecodigo.md"
     - "Recursos y FAQ": "ut2-introduccionatypescript/13recursos.md"
+  - "UT3: Introducción a Angular":
+    - "1. ¿Qué es Angular?": "ut3-introduccionaangular/1introduccion.md"
+    - "2. Conceptos Básicos de Angular": "ut3-introduccionaangular/2conceptosbasicos.md"
+    - "3. Ruteo y navegacion": "ut3-introduccionaangular/3ruteoynavegacion.md"
+    - "4. Gestión del estado y comunicación entre componentes": "ut3-introduccionaangular/4comunicacionentrecomponentes.md"
+    - "5. Formularios": "ut3-introduccionaangular/5formularios.md"
+    - "6. Consumo de APIs y Manejo de HTTP": "ut3-introduccionaangular/6consumodeapis.md"
+    - "7. Pipes y filtros": "ut3-introduccionaangular/7pipesyfiltros.md"
+    - "8. Recursos y FAQ": "ut3-introduccionaangular/8recursosyfaq.md"
 markdown_extensions:
   - admonition
   - attr_list
