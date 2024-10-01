@@ -68,24 +68,100 @@ En este ejemplo, las **doble llaves** (`{{ }}`) se utilizan para la **interpolac
 
 ## Directivas: ngIf, ngFor, ngSwitch ⚙️
 
-Las **directivas** son instrucciones especiales que le dicen a Angular cómo manipular el DOM. Hay tres tipos de directivas: de atributos, estructurales y componentes.
+En Angular 18, las **directivas** siguen siendo una parte fundamental para controlar la visualización y la interacción de los componentes con el DOM. Las directivas estructurales como `ngIf` y `ngFor` permiten modificar la estructura del DOM dinámicamente en función de las condiciones y las listas de elementos. Angular 18 introduce nuevas formas de trabajar con estas directivas, haciendo el código más legible y fácil de escribir.
 
-- **ngIf**: Renderiza elementos basados en una condición.
-- **ngFor**: Itera sobre una lista de elementos.
-- **ngSwitch**: Muestra un elemento de entre varios posibles, según una condición.
+Las **directivas** en Angular se dividen en tres tipos:
 
-### Ejemplo con ngIf y ngFor:
+- **Directivas de atributos**: Modifican la apariencia o comportamiento de un elemento (por ejemplo, `ngClass`, `ngStyle`).
+- **Directivas estructurales**: Modifican la estructura del DOM (por ejemplo, `ngIf`, `ngFor`, `ngSwitch`).
+- **Directivas de componentes**: Extienden o reutilizan la lógica de componentes.
+
+### Directiva `ngIf`
+
+`ngIf` es una directiva estructural que se utiliza para renderizar o eliminar un elemento del DOM en función de una condición booleana.
+
+```html
+<p *ngIf="isLoggedIn">¡Bienvenido, usuario!</p>
+<p *ngIf="!isLoggedIn">Por favor, inicia sesión.</p>
+```
+
+En este ejemplo, si la variable `isLoggedIn` es `true`, se muestra el mensaje de bienvenida. Si es `false`, se muestra un mensaje para que el usuario inicie sesión.
+
+### Nueva sintaxis @if en Angular 18
+
+En Angular 18, se ha introducido una nueva forma de manejar condicionales en las plantillas: la sintaxis `@if`. Aunque sigue siendo una funcionalidad interna que se traduce a `ngIf`, permite escribir condicionales de forma más concisa y clara, especialmente cuando tienes varios bloques condicionales en la misma plantilla.
+
+```html
+@if (isLoggedIn) {
+  <p>¡Bienvenido, usuario!</p>
+} @else {
+  <p>Por favor, inicia sesión.</p>
+}
+```
+
+### Directiva `ngFor`
+
+`ngFor` es otra directiva estructural que se utiliza para iterar sobre una lista de elementos y generar un elemento DOM para cada ítem de la lista.
+
 ```html
 <ul>
   <li *ngFor="let item of items">
     {{ item }}
   </li>
 </ul>
-
-<p *ngIf="items.length === 0">No hay elementos disponibles.</p>
 ```
 
-Aquí, `ngFor` se utiliza para generar una lista dinámica, y `ngIf` solo muestra el mensaje si no hay elementos en la lista.
+Este código genera una lista dinámica de elementos basados en el array `items`. Cada elemento del array se muestra dentro de un `<li>`.
+
+### Nueva sintaxis @for en Angular 18
+
+Al igual que `@if`, Angular 18 introduce la sintaxis `@for` como una alternativa más moderna para `ngFor`. Esta nueva sintaxis es útil cuando deseas un código más legible y estructurado, especialmente en plantillas largas o complejas.
+
+```html
+<ul>
+  @for (let item of items) {
+    <li>{{ item }}</li>
+  }
+</ul>
+```
+
+En este caso, Angular convierte automáticamente la sintaxis `@for` en la directiva `ngFor`, haciendo que el código sea más limpio y fácil de leer.
+
+### Directiva `ngSwitch`
+
+La directiva `ngSwitch` es útil cuando necesitas mostrar uno de varios elementos posibles, dependiendo de una condición. Es similar a un `switch` en programación, pero aplicado al DOM.
+
+```html
+<div [ngSwitch]="color">
+  <p *ngSwitchCase="'red'">El color es rojo.</p>
+  <p *ngSwitchCase="'blue'">El color es azul.</p>
+  <p *ngSwitchDefault>El color es desconocido.</p>
+</div>
+```
+
+En este ejemplo, dependiendo del valor de `color`, se mostrará uno de los párrafos correspondientes. Si el valor no coincide con ningún `ngSwitchCase`, se muestra el contenido de `ngSwitchDefault`.
+
+---
+
+### Ejemplo con @if y @for en Angular 18:
+
+Aquí tienes un ejemplo completo que combina las nuevas directivas `@if` y `@for`:
+
+```html
+<div>
+  @if (items.length > 0) {
+    <ul>
+      @for (let item of items) {
+        <li>{{ item }}</li>
+      }
+    </ul>
+  } @else {
+    <p>No hay elementos disponibles.</p>
+  }
+</div>
+```
+
+En este ejemplo, si el array `items` contiene elementos, se renderiza una lista con cada uno de ellos. Si no hay elementos, se muestra el mensaje "No hay elementos disponibles".
 
 ---
 
