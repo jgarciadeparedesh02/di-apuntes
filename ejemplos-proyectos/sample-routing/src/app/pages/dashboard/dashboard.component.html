@@ -1,0 +1,7 @@
+<p>dashboard works!</p>
+
+<div *ngFor="let p of productos">
+    <h3>{{ p.nombre }}</h3>
+    <p>Precio: {{ p.precio }}</p>
+    <a [routerLink]="['/product', p.id]">Ver detalles</a>
+</div>
