@@ -1,0 +1,9 @@
+<div>
+  <ul>
+    <li *ngFor="let task of taskList">
+      {{ task.title }} -
+      <span [class]="task.completed ? 'completed' : ''">{{ task.completed ? 'Completada' : 'Pendiente' }}</span>
+      <button (click)="completeTask(task.id)" [disabled]="task.completed">Completar</button>
+    </li>
+  </ul>
+</div>

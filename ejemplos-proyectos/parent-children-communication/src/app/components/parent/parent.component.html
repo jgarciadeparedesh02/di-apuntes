@@ -1,0 +1,5 @@
+<div class="container">
+    <h2>Lista de Tareas</h2>
+    <app-child [taskList]="tasks" (taskCompleted)="onTaskCompleted($event)">
+    </app-child>
+</div>
