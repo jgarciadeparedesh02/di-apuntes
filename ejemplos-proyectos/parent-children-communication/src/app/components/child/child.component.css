@@ -1,5 +1,33 @@
-.completed {
-    color: green;
-    font-weight: bold;
-  }
-  
+/* child.component.css */
+
+h2 {
+  color: #ff6633;
+}
+
+p {
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+}
+
+button {
+  background-color: #ff6633;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #cc5226;
+}
+
+:host {
+  display: block;
+  padding: 15px;
+  border: 2px solid #ff6633;
+  border-radius: 8px;
+  background-color: #fff0e6;
+}

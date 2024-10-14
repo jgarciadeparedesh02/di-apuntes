@@ -1,5 +1,5 @@
-<div class="container">
-    <h2>Lista de Tareas</h2>
-    <app-child [taskList]="tasks" (taskCompleted)="onTaskCompleted($event)">
-    </app-child>
-</div>
+<h2>Componente Padre</h2>
+<p>Mensaje recibido del hijo: {{ childMessage }}</p>
+
+<!-- Se envía el mensaje al componente hijo -->
+<app-child [message]="parentMessage" (messageEvent)="receiveMessage($event)"></app-child>
