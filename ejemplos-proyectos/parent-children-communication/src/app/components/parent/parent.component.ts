@@ -13,7 +13,6 @@ export class ParentComponent {
   parentMessage: string = "Mensaje desde el componente padre";
   childMessage: string = '';
 
-
   receiveMessage(message: string) {
     this.childMessage = message;
   }
