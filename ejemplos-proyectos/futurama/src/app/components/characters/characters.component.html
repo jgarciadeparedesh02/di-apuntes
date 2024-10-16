@@ -1,0 +1,12 @@
+<h2>Personajes de Futurama</h2>
+<div class="character-container">
+    <div *ngFor="let character of characters" class="character-card">
+        <div class="character-image">
+            <img [src]="character.images.main" alt="{{ character.name.first }}" />
+        </div>
+        <div class="character-info">
+            <h3>{{ character.name.first }} {{ character.name.last }}</h3>
+            <p class="species">{{ character.species }}</p>
+        </div>
+    </div>
+</div>
