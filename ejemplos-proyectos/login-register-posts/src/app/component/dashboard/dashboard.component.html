@@ -1,0 +1,10 @@
+<div class="container">
+    <div *ngFor="let item of posts">
+        <h2>{{item.title}}</h2>
+        <p>Created at: {{item.createdAt | date:'dd/MM/yyyy HH:mm'}}</p>
+        <p>User ID: {{item.userId}}</p>
+        <p>ID: {{item.id}}</p>
+        <p>{{item.text}}</p>
+        <hr>
+    </div>
+</div>
