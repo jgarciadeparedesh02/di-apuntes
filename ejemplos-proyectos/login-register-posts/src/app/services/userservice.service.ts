@@ -16,7 +16,8 @@ export class UserService {
 
   loginUser(email: string, password: string, onLogin: (success: boolean, user?: any) => void){
     this.http.get('https://67174bf1b910c6a6e02761c0.mockapi.io/user').subscribe((users: any) => {
-        onLogin(users.find((user: any) => user.email === email && user.password === password), users)
+        const user = users.find((user: any) => user.email === email && user.password === password)
+        onLogin(true, user)
     })
   }
 

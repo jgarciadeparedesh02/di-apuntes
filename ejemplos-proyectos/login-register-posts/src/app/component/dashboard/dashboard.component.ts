@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { CommonModule } from '@angular/common';
+import { LocalStorageService } from '../../services/localstorage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,12 +13,14 @@ import { CommonModule } from '@angular/common';
 export class DashboardComponent {
 
   posts: any[] = [];
-  constructor(private postService: PostService) {
+  constructor(private postService: PostService, private localStorageService: LocalStorageService) {
     
   } 
 
   ngOnInit(): void {
-    this.postService.getPostsFromUser(1).subscribe((data: any) => {
+    const userLogged = this.localStorageService.getItem('userLogged');
+    console.log('userLogged', userLogged);
+    this.postService.getPostsFromUser(userLogged?.id).subscribe((data: any) => {
       this.posts = data;
     });
   }
