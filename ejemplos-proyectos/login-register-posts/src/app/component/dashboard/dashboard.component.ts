@@ -19,7 +19,6 @@ export class DashboardComponent {
 
   ngOnInit(): void {
     const userLogged = this.localStorageService.getItem('userLogged');
-    console.log('userLogged', userLogged);
     this.postService.getPostsFromUser(userLogged?.id).subscribe((data: any) => {
       this.posts = data;
     });
