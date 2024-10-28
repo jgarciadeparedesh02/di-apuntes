@@ -1,7 +1,3 @@
-Aquí tienes el documento reescrito y con una explicación más clara sobre JWT:
-
----
-
 # Proyecto: Parque de Dinosaurios - API para Gestión de Parque Temático de Dinosaurios
 
 ## Descripción General
