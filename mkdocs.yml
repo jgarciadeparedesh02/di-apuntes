@@ -36,6 +36,15 @@ nav:
     - "7. Pipes y filtros": "ut3-introduccionaangular/7pipesyfiltros.md"
     - "8. Recursos y FAQ": "ut3-introduccionaangular/8recursosyfaq.md"
     - "9. Explicación del proyecto Todo-List": "ut3-introduccionaangular/9explicacionproyectotodolist.md"
+  - "UT4: Creación y Manejo de Componentes con Angular-Ionic":
+    - "1. Introducción a Angular-Ionic": "ut4-angular-ionic/1introduccion.md"
+    - "2. Desarrollo de Galería de Fotos":
+      - "2.1. Creación de la app e inicialización ": "ut4-angular-ionic/2creacionprimeraapp/21creaciondelaappeinicialización.md"
+      - "2.2. Toma de fotos": "ut4-angular-ionic/2creacionprimeraapp/22tomadefotos.md"
+      - "2.3. Guardado de fotos": "ut4-angular-ionic/2creacionprimeraapp/23guardadodefotos.md"
+      - "2.4. Carga de fotos del sistema": "ut4-angular-ionic/2creacionprimeraapp/24cargadefotosdelsistema.md"
+      - "2.5. Añadiendo la versión móvil": "ut4-angular-ionic/2creacionprimeraapp/25versionmovil.md"
+      
 markdown_extensions:
   - admonition
   - attr_list
