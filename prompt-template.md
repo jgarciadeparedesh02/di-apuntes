@@ -1,1 +1,2 @@
 Crea este contenido para que sea más atractivo para el lector, puedes añadir lo que quieras imágenes, diagramas mermaid, emojis, etc. Añade trozos de código para que sea más legible. Evita añadir enlaces de imágenes. Teniendo en cuenta que el tema es JavaScript. Comienza por un titulo 1. Evita la numeración de subpuntos.Te en encuenta que queremos utilizar angular 18, la última versión.
+Reescribe este tutorial siguiendo los puntos y en español.

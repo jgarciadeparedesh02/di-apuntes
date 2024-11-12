@@ -20,6 +20,10 @@ En este curso, nos enfocaremos en construir interfaces que sean visualmente atra
 
 4. **Unidad 4: Creación y Manejo de Componentes con Angular-Ionic** 🛠️  
    Descubre cómo construir y gestionar **componentes reutilizables** que serán la base para desarrollar interfaces modulares y eficientes con **Angular** e **Ionic**. ¡Todo comienza con un buen componente!
+  - Soluciones híbridas de desarrollo web, IONIC
+  - Introducción a IONIC. Introducir link a la documentación: https://ionicframework.com/docs
+  - Instalación https://ionicframework.com/docs/intro/cli
+  - Crear un template desde la web: https://dashboard.ionicframework.com/org/485acdef-b97f-4e2a-b24f-bd63214179c4/build-app
 
 5. **Unidad 5: Reportes en Angular** 📊  
    Aprende a generar **reportes dinámicos** para aplicaciones que manejan grandes volúmenes de datos. Estos reportes no solo son informativos sino que también brindan valor a la experiencia del usuario.
