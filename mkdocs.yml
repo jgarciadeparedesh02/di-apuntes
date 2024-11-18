@@ -45,6 +45,7 @@ nav:
       - "2.4. Carga de fotos del sistema": "ut4-angular-ionic/2creacionprimeraapp/24cargadefotosdelsistema.md"
       - "2.5. Añadiendo la versión móvil": "ut4-angular-ionic/2creacionprimeraapp/25versionmovil.md"
       - "2.6. Despliegue en Android e IOS": "ut4-angular-ionic/2creacionprimeraapp/26despligueandroidyios.md"
+    - "Prácticas y Tareas": "ut4-angular-ionic/tareas/index.md"
       
 markdown_extensions:
   - admonition
