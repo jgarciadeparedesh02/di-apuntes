@@ -34,3 +34,13 @@ Este índice incluye todas las prácticas guiadas y tareas correspondientes al c
         - Descripción breve.  
         - Imagen (puedes usar un placeholder como `https://via.placeholder.com/150`).  
         - Un `ion-checkbox` para indicar si el usuario ya la ha visto.  
+
+#### [** Directorio de Contactos**](./3directoriodecontactos.md)
+
+- **Objetivo:**  
+    Desarrollar una aplicación que permita a los usuarios gestionar un directorio de contactos.
+
+- **Descripción de la Tarea:**  
+    - Crea una interfaz que muestre una lista de contactos.  
+    - Cada contacto se reprentará con una card. 
+    - Agrupa los contactos en categorías con encabezados claros para "Amigos", "Familia" y "Trabajo".
